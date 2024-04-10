@@ -26,15 +26,19 @@ namespace BaiTh.Controllers
 
 		public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
-            // Giả sử bạn có phương thức lấy thông tin sản phẩm từ productId
-            var product = await GetProductFromDatabase(productId);
+			// Giả sử bạn có phương thức lấy thông tin sản phẩm từ productId
+			
+			var product = await GetProductFromDatabase(productId);
+			var imageUrl = product.ImageUrl ?? "/images/default-product-image.png";
             var cartItem = new CartItem
             {
                 ProductId = productId,
                 Name = product.Name,
                 Price = product.Price,
-                Quantity = quantity
-            };
+                Quantity = quantity,
+				ImageUrl = imageUrl
+
+			};
             var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new
            ShoppingCart();
             cart.AddItem(cartItem);
