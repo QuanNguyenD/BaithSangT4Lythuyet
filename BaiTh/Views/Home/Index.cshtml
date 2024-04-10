@@ -1,0 +1,98 @@
+﻿@model IEnumerable<BaiTh.Models.Product>
+@{
+	ViewData["Title"] = "Home Page";
+	int numOfQuantity = 1; 
+}
+<section class="py-2">
+	<div class="container px-4 px-lg-5 mt-5">
+
+		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+			@foreach (var item in Model)
+			{
+				<div class="col mb-5">
+					<div class="card gap-3" style="width: 18rem">
+						<img src="@item.ImageUrl" class="card-img-top" alt="..."
+							 style="height: 300px">
+						<div class="card-body">
+							<h5 class="card-title">
+								@Html.DisplayFor(modelItem => item.Name)
+							</h5>
+							<div class="d-flex">
+								<span>Price: </span>
+								<p class="mx-3">@item.Price.ToString("#,##0") Vnđ</p>
+							</div>
+							<a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@item.Id" asp-route-quantity="@numOfQuantity">
+								<button class="btn btn-outline-dank"> <i class="bi-cart-fill me-1"></i> Add to Cart</button>
+							</a> 
+							@*   <a asp-controller="ShoppingCart" asp-action="Index">
+								<button class="btn btn-outline-dank"> <i class="bi-cart-fill me-1"></i> Add to Cart</button>
+							</a>  *@ 
+
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+
+	</div>
+</section>
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<section class="py-2">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center row-cols">
+
+			</div>
+		</div>
+	</section>
+	<script>
+		fetch('https://localhost:7161/api/ProductApi').then(response => response.json()).then(products => {
+			console.log(products);
+			renderProduct(products);
+		}).catch(error => console.error('Error:', error));
+
+
+		function renderProduct(products) {
+			const container = document.querySelector('.row-cols');
+			product.forEach(product => {
+				const productHtml = getProductHtml(product);
+				container.innerHTML += productHtml;
+
+			});
+		}
+
+		function getProductHtml(product) {
+		return
+				<p> ffffvfv</p>;
+		// 		<div class="col mb-5">
+		// 			<div class="card gap-3" style="width: 18rem">
+		// 				<img src="${ product.imageUrl }" class="card-img-top" alt="..."
+		// 					 style="height: 300px">
+		// 				<div class="card-body">
+		// 					<h5 class="card-title">${product.name}</h5>
+		// 					<div class="d-flex">
+		// 						<span>Price: </span>
+		// 						<p class="mx-3">${product.price.toLocaleString() } Vnđ</p>
+		// 					</div>
+		// 					<a href="/ShoppingCart/AddToCart/${product.id}" class="btn btn-outline-dark">
+		// 						<i class="bi-cart-fill me-1"></i> Them Vao Gio Hang
+		// 					</a>
+								
+ 
+		// 				</div>
+		// 			</div>
+		// 		</div>;
+
+		}
+	</script>
+
+	
+</body>
+</html> *@
