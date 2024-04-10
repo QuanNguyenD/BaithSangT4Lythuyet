@@ -14,14 +14,14 @@
 			<td>@item.Name</td>
 			<td>
 
-				<form asp-controller="ShoppingCart" asp-action="UpdateQuantity" method="post">
-					<input type="hidden" name="productId" value="@item.ProductId" />
-					<label for="quantity">Số Lượng:</label>
-					<input type="number" id="quantity" name="quantity" value="@item.Quantity" />
-					<button class="btn btn-primary" type="submit">Cập nhật</button>
-				</form>
+                <form asp-controller="ShoppingCart" asp-action="UpdateQuantity" method="post">
+                    <input type="hidden" name="productId" value="@item.ProductId" />
+                    <label for="quantity">Số Lượng:</label>
+                    <input type="number" id="quantity" name="quantity" value="@item.Quantity" />
+                    <button class="btn btn-primary" type="submit">Cập nhật</button>
+                </form>
 
-			</td>
+            </td>
 			<td>@item.Price</td>
 			<td>@(item.Price * item.Quantity)</td>
 			<td>

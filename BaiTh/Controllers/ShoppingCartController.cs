@@ -94,7 +94,15 @@ namespace BaiTh.Controllers
 			await _context.SaveChangesAsync();
 			HttpContext.Session.Remove("Cart");
 			return View("OrderCompleted", order.Id);
- }
+        }
+        public async Task<IActionResult> UpdateQuantityAsync(int productId, int quantity)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ??new ShoppingCart();
+            cart.UpdateQuantity(productId, quantity);
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return RedirectToAction("Index");
+
+        }
 
 	}
 
